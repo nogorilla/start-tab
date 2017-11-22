@@ -1,5 +1,61 @@
-$body-color: blue;
-
+* {
+  box-sizing: border-box;
+}
 body {
-  color: $body-color;
-}  
+  background-color: #f6f6f6;
+  font-size: 16px;
+  font-family: "Roboto Mono"
+}
+
+.sidebar {
+  display: flex;
+  float: left;
+  flex-direction: column;
+  padding-left: 5%;
+}
+
+.main {
+  width: 75%;
+}
+
+.border {
+  border-left: 1px dotted white;
+}
+
+.time {
+  min-height: 108px;
+  text-align: left;
+  color: #555;
+  font-size: 1.7em;
+  padding-top: 25px;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+img.line {
+  left: 50%;
+  position: fixed;
+  top: 5em;
+}
+
+a:link {
+  text-decoration: none;
+  color: #555;
+  display: block;
+}
+a:visited {
+  color: #555;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #555;
+}
+ul {
+  margin: 0;
+  padding-left: 8px;
+}
+ul li {
+  list-style-type: none
+}
+
