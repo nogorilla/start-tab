@@ -7,3 +7,5 @@ if (module.hot) {
 import 'babel-polyfill';
 import '../styles/fonts.scss';
 import '../styles/index.scss';
+
+import { DateFormater } from './clock';
