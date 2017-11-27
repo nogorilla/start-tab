@@ -3,7 +3,7 @@ import moment from 'moment';
 class Clock {
   constructor() {
     this._display();
-    setInterval(display, 580);
+    setInterval(this._display.bind(this), 580);
   }
 
   _display() {
