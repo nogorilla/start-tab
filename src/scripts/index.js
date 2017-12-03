@@ -8,4 +8,12 @@ import 'babel-polyfill';
 import '../styles/fonts.scss';
 import '../styles/index.scss';
 
-import { DateFormater } from './clock';
+import { Clock } from './clock';
+
+const Weather = require('./weather');
+
+Weather.getCurrent('Cincinnati')
+  .then((data) => {
+    console.log('Weather data:', data);
+    // document.getElementById('weather').innerText = `temp: ${data.temp}; desc: ${data.desc}`;
+  });
