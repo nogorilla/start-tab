@@ -21,10 +21,22 @@ body {
   border-left: 1px dotted white;
 }
 
-.time {
+#clock {
   position: absolute;
   top: 5px;
   left: 25%;
+  min-height: 108px;
+  text-align: left;
+  color: #555;
+  font-size: 1.7em;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+#weather {
+  position: absolute;
+  top: 5px;
+  right: 25%;
   min-height: 108px;
   text-align: left;
   color: #555;

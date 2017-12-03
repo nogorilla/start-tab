@@ -14,6 +14,5 @@ const Weather = require('./weather');
 
 Weather.getCurrent('Cincinnati')
   .then((data) => {
-    console.log('Weather data:', data);
-    // document.getElementById('weather').innerText = `temp: ${data.temp}; desc: ${data.desc}`;
+    document.getElementById('weather').innerText = `temp: ${data.temp}; desc: ${data.desc}`;
   });
