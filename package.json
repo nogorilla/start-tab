@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.9.0",
-    "moment": "^2.19.2"
+    "moment": "^2.19.2",
+    "weather.js": "^0.1.0"
   }
 }

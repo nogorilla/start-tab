@@ -8,4 +8,5 @@ import 'babel-polyfill';
 import '../styles/fonts.scss';
 import '../styles/index.scss';
 
-import { DateFormater } from './clock';
+const Clock = require('./clock');
+const Weather = require('./weather');

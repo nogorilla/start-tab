@@ -8,10 +8,9 @@ body {
 }
 
 .sidebar {
-  display: flex;
-  float: left;
-  flex-direction: column;
-  padding-left: 5%;
+  position: absolute;
+  left: 15;
+  top: 5px;
 }
 
 .main {
@@ -22,12 +21,26 @@ body {
   border-left: 1px dotted white;
 }
 
-.time {
+#clock {
+  position: absolute;
+  top: 5px;
+  left: 25%;
   min-height: 108px;
   text-align: left;
   color: #555;
   font-size: 1.7em;
-  padding-top: 25px;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+
+#weather {
+  position: absolute;
+  top: 5px;
+  right: 25%;
+  min-height: 108px;
+  text-align: left;
+  color: #555;
+  font-size: 1.7em;
   line-height: 1em;
   text-transform: uppercase;
 }
@@ -58,4 +71,10 @@ ul {
 ul li {
   list-style-type: none
 }
-
+// html {
+//   background: url(../assets/images/bg.jpg) no-repeat center center fixed;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+// }
