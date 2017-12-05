@@ -1,46 +1,40 @@
-import http from 'http';
-import URL from 'url';
+const WeatherService = require('./services/weather-service');
+const moment = require('moment');
 
 class Weather {
   constructor() {
-    console.log('weather constructor');
-    this.APIKEY = 'eadd12502a9e5df147d167dc44b814f7';
-  }
-  _getJSON(url, resolve, reject) {
-    http.get(URL.parse(url), (res) => {
-      let body = '';
-      res.on('data', (chunk) => {
-        body += chunk;
-      });
-
-      res.on('end', () => {
-          let data = JSON.parse(body);
-          if (data.cod === 200) {
-            let temp = Math.round(data.main.temp);
-            let desc = data.weather[0].main;
-            resolve({ temp: temp, desc: desc });
-          } else {
-            reject('failed to retrieve weather');
-          }
-      });
-    }).on('error', (e) => {
-      reject(e);
-    });
+    const weather = document.getElementById('weather');
+    weather.addEventListener('click', this._get.bind(this));
+    this._load();
+    setInterval(this._load, 1.8e+6);
   };
-
-  getCurrent(city) {
-    let url = "http://api.openweathermap.org/data/2.5/weather?units=imperial&q=" + encodeURIComponent(city) + "&cnt=1";
-
-    if (this.APIKEY) {
-      url = url + "&APPID=" + this.APIKEY;
+  _get() {
+    WeatherService.getCurrent('Cincinnati')
+      .then((data) => {
+        this._display(data);
+        localStorage.setItem('weather-check', moment().unix());
+        localStorage.setItem('weather', JSON.stringify(data));
+        console.log('weather from api');
+      });
+  };
+  _load() {
+    let lastCheck = localStorage.getItem('weather-check');
+    if (lastCheck !== 'undefined') {
+      if (moment().isAfter(moment.unix(parseInt(lastCheck)).add(30, 'm'))) {
+        this._get();
+      } else {
+        let data = JSON.parse(localStorage.getItem('weather'));
+        this._display(data);
+        console.log('weather from localStorage');
+      }
     } else {
-      console.error('WARNING: You must set an apiKey for openweathermap');
+      this._get();
     }
-
-    return new Promise((resolve, reject) => {
-      this._getJSON(url, resolve, reject);
-    });
-  };
+  }
+  _display(data) {
+    document.getElementById('temp').innerText = `${data.temp}°F`;
+    document.getElementById('desc').innerText = data.desc;
+  }
 }
 
 module.exports = new Weather();
