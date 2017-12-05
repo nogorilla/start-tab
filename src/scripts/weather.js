@@ -5,7 +5,6 @@ class Weather {
   constructor() {
     console.log('weather constructor');
     this.APIKEY = 'eadd12502a9e5df147d167dc44b814f7';
-    return this;
   }
   _getJSON(url, resolve, reject) {
     http.get(URL.parse(url), (res) => {
@@ -16,9 +15,9 @@ class Weather {
 
       res.on('end', () => {
           let data = JSON.parse(body);
-          if (data.cod === '200') {
-            let temp = data.list[0].main.temp;
-            let desc = data.list[0].weather[0].main;
+          if (data.cod === 200) {
+            let temp = Math.round(data.main.temp);
+            let desc = data.weather[0].main;
             resolve({ temp: temp, desc: desc });
           } else {
             reject('failed to retrieve weather');
@@ -30,7 +29,7 @@ class Weather {
   };
 
   getCurrent(city) {
-    let url = "http://api.openweathermap.org/data/2.5/forecast?units=imperial&q=" + encodeURIComponent(city) + "&cnt=1";
+    let url = "http://api.openweathermap.org/data/2.5/weather?units=imperial&q=" + encodeURIComponent(city) + "&cnt=1";
 
     if (this.APIKEY) {
       url = url + "&APPID=" + this.APIKEY;
