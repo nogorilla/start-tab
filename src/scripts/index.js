@@ -8,6 +8,5 @@ import 'babel-polyfill';
 import '../styles/fonts.scss';
 import '../styles/index.scss';
 
-import { Clock } from './clock';
-
+const Clock = require('./clock');
 const Weather = require('./weather');
